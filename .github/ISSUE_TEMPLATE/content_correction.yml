@@ -1,0 +1,65 @@
+name: Content correction / แก้ไขเนื้อหา
+description: รายงานเนื้อหาใน skill ที่ขัดกับกฎหมาย, ระเบียบ, หรือธรรมเนียมไทยล่าสุด / Report content that conflicts with current Thai law, regulation, or convention.
+title: "[content] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ใช้แบบฟอร์มนี้เมื่อพบว่าเนื้อหาใน skill (โดยเฉพาะ `thai-pdpa`, `thai-invoice`, `thai-government-form`, `thai-id-validate`) ขัดกับประกาศ, กฎหมาย, หรือธรรมเนียมที่เป็นปัจจุบัน.
+
+        Use this form when you find skill content (especially the legal/regulatory skills) that conflicts with a current announcement, statute, or convention. Citations to primary sources are essential — without them the report cannot be acted on.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill ที่ต้องแก้ / Skill to correct
+      options:
+        - thai-pdpa
+        - thai-invoice
+        - thai-government-form
+        - thai-id-validate
+        - thai-address
+        - thai-date-format
+        - thai-text-processing
+        - thai-resume
+        - thai-festival-card
+        - thai-translate
+        - thai-social-caption
+        - thai-customer-service
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: เนื้อหาปัจจุบันที่ผิด / Current incorrect content
+      description: paste ส่วนของ `SKILL.md` หรือ template ที่ผิด. ระบุ filename + line ถ้ารู้.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: เนื้อหาที่ถูกต้อง / What it should say
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: แหล่งอ้างอิงต้นทาง / Primary source citation
+      description: |
+        ลิงก์ไปยังประกาศต้นทาง (ราชกิจจานุเบกษา, ประกาศกรมสรรพากร, ประกาศ PDPC, ระเบียบสำนักนายกฯ, ฯลฯ). ระบุวันที่ของประกาศ.
+        Link to the primary source — Royal Gazette, Revenue Department announcement, PDPC notice, Office of the Prime Minister regulation, etc. Include the publication date.
+      placeholder: |
+        - ประกาศ PDPC ที่ 2/2566 ลงราชกิจจาฯ วันที่ ... — https://...
+        - คำชี้แจงกรมสรรพากร เรื่อง ... ลงวันที่ ... — https://www.rd.go.th/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: ผลกระทบ / Impact
+      description: ถ้าผู้ใช้ใช้เนื้อหาผิดต่อไป จะเกิดอะไร — เอกสารถูก reject, ค่าปรับ, ความเสี่ยงทางกฎหมาย ฯลฯ.

@@ -134,8 +134,10 @@ claude-thai-skills/
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin metadata
 │   └── marketplace.json     # Marketplace listing
-├── .github/workflows/
-│   └── test.yml             # CI: รัน scripts/test-all.sh ทุก push/PR
+├── .github/
+│   ├── workflows/test.yml   # CI: รัน scripts/test-all.sh ทุก push/PR
+│   ├── ISSUE_TEMPLATE/      # bug / content correction / feature templates
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── assets/banner.svg
 ├── scripts/
 │   ├── test-all.sh          # รัน self-test ทุก skill ในคำสั่งเดียว
@@ -150,12 +152,17 @@ claude-thai-skills/
 │   │   ├── validate.py      # checksum + PromptPay QR
 │   │   └── validate.ts
 │   └── ... (12 skills total)
+├── template/
+│   └── SKILL.md             # scaffold สำหรับสร้าง skill ใหม่
 ├── docs/
 │   ├── my-setup-th.md       # ทัวร์ config ส่วนตัว (sanitized)
 │   └── recommended-mcp.md   # MCP servers แนะนำ
 ├── install.sh
+├── AGENTS.md                # คู่มือสำหรับ AI agent (Claude, Codex, Cursor, ฯลฯ)
 ├── CONTRIBUTING.md          # ขั้นตอนการ contribute, ตั้งค่าเครื่อง, รัน test
 ├── SECURITY.md              # รายงานช่องโหว่ + disclaimer เนื้อหากฎหมาย
+├── CHANGELOG.md             # บันทึก release ตาม Keep a Changelog
+├── THIRD_PARTY_NOTICES.md   # เครดิตไลบรารีและแหล่งอ้างอิงทางการ
 ├── LICENSE                  # MIT
 └── README.md
 ```
@@ -204,7 +211,7 @@ claude-thai-skills/
 - **เจอเนื้อหาผิด (โดยเฉพาะ legal / Revenue / PDPA):** เปิด issue พร้อมแหล่งอ้างอิง.
 - **มี test scenario:** PR ได้เลย — `thai-pdpa`, `thai-resume`, `thai-government-form` ต้องการที่สุด.
 
-ขั้นตอนละเอียด, วิธีรัน test runner, รูปแบบ commit, และข้อแนะนำสำหรับเนื้อหาที่อ้างอิงกฎหมายอ่านได้ใน [CONTRIBUTING.md](CONTRIBUTING.md). ถ้าพบช่องโหว่ด้านความปลอดภัย โปรดรายงานตามขั้นตอนใน [SECURITY.md](SECURITY.md) แทนการเปิด public issue.
+ขั้นตอนละเอียด, วิธีรัน test runner, รูปแบบ commit, และข้อแนะนำสำหรับเนื้อหาที่อ้างอิงกฎหมายอ่านได้ใน [CONTRIBUTING.md](CONTRIBUTING.md). ถ้าจะเพิ่ม skill ใหม่ใช้ [template/SKILL.md](template/SKILL.md) เป็น scaffold. AI agent (Claude, Codex CLI, Cursor, Gemini CLI, ฯลฯ) อ่าน [AGENTS.md](AGENTS.md) เป็นจุดเริ่ม. ประวัติ release อยู่ใน [CHANGELOG.md](CHANGELOG.md). ที่มาของไลบรารีและสเปกของหน่วยงานราชการที่ skill อ้างอิงระบุไว้ใน [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). ถ้าพบช่องโหว่ด้านความปลอดภัย โปรดรายงานตามขั้นตอนใน [SECURITY.md](SECURITY.md) แทนการเปิด public issue.
 
 ไม่ต้องเกรงใจ. ผมเองก็เขียนใต้กดดันบางครั้ง — เจอบั๊กบอกได้ตรงๆ.
 
