@@ -107,24 +107,30 @@ def calculate_wht(
 
 
 if __name__ == "__main__":
-    # Self-test: prints PASS/FAIL for each expected case.
-    def check(label: str, got: Decimal, want: Decimal) -> None:
-        status = "PASS" if got == want else "FAIL"
-        print(f"  [{status}] {label}: got {got}, want {want}")
+    # Self-test: prints PASS/FAIL for each expected case and exits non-zero on
+    # any failure so CI can rely on the exit code rather than scraping stdout.
+    failures: list[str] = []
 
-    print("calculate_vat(1000) → 70 VAT, 1070 total")
+    def check(label: str, got: Decimal, want: Decimal) -> None:
+        ok = got == want
+        status = "PASS" if ok else "FAIL"
+        print(f"  [{status}] {label}: got {got}, want {want}")
+        if not ok:
+            failures.append(label)
+
+    print("calculate_vat(1000) -> 70 VAT, 1070 total")
     v = calculate_vat(Decimal("1000"))
     check("subtotal", v["subtotal"], Decimal("1000.00"))
     check("vat", v["vat"], Decimal("70.00"))
     check("total", v["total"], Decimal("1070.00"))
 
-    print("calculate_vat_inclusive(1070) → 1000 subtotal, 70 VAT")
+    print("calculate_vat_inclusive(1070) -> 1000 subtotal, 70 VAT")
     vi = calculate_vat_inclusive(Decimal("1070"))
     check("subtotal", vi["subtotal"], Decimal("1000.00"))
     check("vat", vi["vat"], Decimal("70.00"))
     check("total", vi["total"], Decimal("1070.00"))
 
-    print("calculate_wht(10000, 0.03) → 300 WHT, 9700 net")
+    print("calculate_wht(10000, 0.03) -> 300 WHT, 9700 net")
     w = calculate_wht(Decimal("10000"), Decimal("0.03"))
     check("amount", w["amount"], Decimal("10000.00"))
     check("wht", w["wht"], Decimal("300.00"))
@@ -136,3 +142,11 @@ if __name__ == "__main__":
     check("transport rate", WHT_RATES["transport"], Decimal("0.01"))
     check("service rate", WHT_RATES["service"], Decimal("0.03"))
     check("professional rate", WHT_RATES["professional"], Decimal("0.03"))
+
+    print()
+    if failures:
+        print(f"FAILED: {len(failures)} case(s)")
+        for f in failures:
+            print(f"  - {f}")
+        raise SystemExit(1)
+    print("All tests passed.")

@@ -7,6 +7,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-A8A29E?style=flat&labelColor=27272A)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/for-Claude%20Code-D97757?style=flat&labelColor=27272A)](https://docs.claude.com/en/docs/claude-code)
 [![Skills](https://img.shields.io/badge/skills-12-D97757?style=flat&labelColor=27272A)](#skills--ตัวที่มี)
+[![CI](https://github.com/Boom-Vitt/claude-thai-skills/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Boom-Vitt/claude-thai-skills/actions/workflows/test.yml)
 
 </div>
 
@@ -133,7 +134,12 @@ claude-thai-skills/
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin metadata
 │   └── marketplace.json     # Marketplace listing
+├── .github/workflows/
+│   └── test.yml             # CI: รัน scripts/test-all.sh ทุก push/PR
 ├── assets/banner.svg
+├── scripts/
+│   ├── test-all.sh          # รัน self-test ทุก skill ในคำสั่งเดียว
+│   └── validate-skills.py   # ตรวจ frontmatter ของ SKILL.md ทุกตัว
 ├── skills/
 │   ├── thai-invoice/
 │   │   ├── SKILL.md
@@ -148,6 +154,8 @@ claude-thai-skills/
 │   ├── my-setup-th.md       # ทัวร์ config ส่วนตัว (sanitized)
 │   └── recommended-mcp.md   # MCP servers แนะนำ
 ├── install.sh
+├── CONTRIBUTING.md          # ขั้นตอนการ contribute, ตั้งค่าเครื่อง, รัน test
+├── SECURITY.md              # รายงานช่องโหว่ + disclaimer เนื้อหากฎหมาย
 ├── LICENSE                  # MIT
 └── README.md
 ```
@@ -160,6 +168,14 @@ claude-thai-skills/
 |---|---|---|
 | **Validator (มี code + tests)** | `thai-id-validate`, `thai-date-format`, `thai-address`, `thai-invoice` | Python + TypeScript self-test ผ่านครบ |
 | **Prose / Reference** | อีก 8 ตัว | v0.1 — ครบเนื้อหา ยังไม่ผ่าน adversarial testing |
+
+รัน self-test ทุกตัวพร้อม validator ที่ตรวจ `SKILL.md` ของทั้ง 12 skill ในคำสั่งเดียว:
+
+```bash
+./scripts/test-all.sh
+```
+
+ทุก commit ที่ push ไปยัง `main` และทุก pull request จะรันคำสั่งเดียวกันนี้ผ่าน GitHub Actions โดยอัตโนมัติ — ดู workflow ที่ [.github/workflows/test.yml](.github/workflows/test.yml). รายละเอียดวิธี register self-test ของ skill ใหม่ใน CI อยู่ใน [CONTRIBUTING.md](CONTRIBUTING.md).
 
 > [!NOTE]
 > ตัวอย่างทุกอย่างในรีโปนี้ (เลขบัตรประชาชน, เบอร์โทร, ที่อยู่, ชื่อบริษัท) เป็น **synthetic test fixtures** — สร้างให้ผ่าน checksum, ไม่ใช่ของบุคคล/องค์กรจริง
@@ -187,6 +203,8 @@ claude-thai-skills/
 - **เพิ่ม skill ใหม่:** อ่าน skill เก่าเป็น reference ก่อน. ตั้งชื่อ `thai-<topic>`. Frontmatter ใส่ trigger ภาษาไทยในเครื่องหมายคำพูด — ที่ Claude ใช้ match.
 - **เจอเนื้อหาผิด (โดยเฉพาะ legal / Revenue / PDPA):** เปิด issue พร้อมแหล่งอ้างอิง.
 - **มี test scenario:** PR ได้เลย — `thai-pdpa`, `thai-resume`, `thai-government-form` ต้องการที่สุด.
+
+ขั้นตอนละเอียด, วิธีรัน test runner, รูปแบบ commit, และข้อแนะนำสำหรับเนื้อหาที่อ้างอิงกฎหมายอ่านได้ใน [CONTRIBUTING.md](CONTRIBUTING.md). ถ้าพบช่องโหว่ด้านความปลอดภัย โปรดรายงานตามขั้นตอนใน [SECURITY.md](SECURITY.md) แทนการเปิด public issue.
 
 ไม่ต้องเกรงใจ. ผมเองก็เขียนใต้กดดันบางครั้ง — เจอบั๊กบอกได้ตรงๆ.
 
