@@ -85,7 +85,7 @@ Claude เก่งภาษาไทยอยู่แล้ว แต่ยั
 "แปลงเลข ๒๕๖๘ เป็น ค.ศ. และเขียนวันที่ ๑๖ พ.ค. แบบราชการ"
 "ออกใบกำกับภาษี ค่าบริการ design 30,000 บาท ลูกค้า บริษัท X จำกัด"
 "เขียนหนังสือลาป่วยถึงผู้อำนวยการ 3 วัน เพราะไข้หวัดใหญ่"
-"ตรวจเลขบัตรประชาชน 1101700230705 ว่าใช่ของจริงไหม"
+"ตรวจเลขบัตรประชาชน 9999999999994 ว่า checksum ผ่านไหม (เลขทดสอบ ไม่ใช่ของจริง)"
 "เขียน privacy policy สำหรับเว็บขายของ ต้อง compliance PDPA"
 "ตัดคำประโยค 'ฉันรักการเขียนโค้ดภาษาไทยมาก' ด้วย PyThaiNLP"
 "reply ลูกค้า LINE OA ที่บ่นว่าของเสีย ขอเงินคืน"
@@ -126,10 +126,21 @@ claude-thai-skills/
 
 | Tier | Skills | สถานะ |
 |---|---|---|
-| **Validator (มี code)** | `thai-id-validate`, `thai-date-format`, `thai-address`, `thai-invoice` | Python + TypeScript พร้อม self-test |
+| **Validator (มี code)** | `thai-id-validate`, `thai-date-format`, `thai-address`, `thai-invoice` | Python + TypeScript พร้อม self-test ที่ผ่านทั้งหมด |
 | **Prose / Reference** | อีก 8 skills | v0.1 — ครบเนื้อหา, ยังไม่ผ่าน adversarial testing |
 
 PR ที่ช่วย harden ด้วย test scenario เพิ่มเติม ยินดีต้อนรับ ✨
+
+> 🛡 **ความปลอดภัยของข้อมูล:** ตัวอย่างทุกอย่างในรีโปนี้ (เลขบัตรประชาชน, เบอร์โทร, ที่อยู่, ชื่อบริษัท) เป็น **synthetic test fixtures** — ไม่ตรงกับบุคคล/องค์กรจริง. Test ID ทั้งหมดสร้างขึ้นใหม่เพื่อให้ checksum ผ่าน, ไม่ใช่ ID ที่ออกโดยกรมการปกครอง.
+>
+> **Privacy notice:** All examples in this repo (national IDs, phone numbers, addresses, company names) are **synthetic test fixtures** — they do not correspond to real people or organizations. Test IDs are constructed to pass the checksum, not issued by DOPA.
+
+## ปัญหาที่รู้แล้ว / Known issues (v0.1)
+
+- `thai-address/parse.py` แยกชื่อถนนแบบคำเดียวเท่านั้น — ถ้าเป็นถนนหลายคำ (เช่น "พระราม 9") อาจตัดเฉพาะคำแรก. PR แก้ regex ยินดีต้อนรับ.
+- `thai-pdpa` SKILL.md อ้างอิงเลขมาตราของ พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ตามฉบับล่าสุดที่ maintainer ตรวจสอบ. ถ้ามีประกาศ PDPC ใหม่ที่กระทบ เปิด issue แจ้งได้
+- `thai-invoice` อัตรา WHT และ VAT 7% อิงตามอัตราปัจจุบัน — ถ้ารัฐบาลเปลี่ยน rate (เช่น VAT กลับเป็น 10%) ต้องอัปเดต `calc.py` และ template
+- Prose skills (8 ตัว) ยังไม่ได้ผ่าน adversarial test scenarios ตามแนวทาง `superpowers:writing-skills`. ใครอยากช่วย harden เปิด PR ได้
 
 ---
 

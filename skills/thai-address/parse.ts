@@ -47,7 +47,7 @@ const FIELD_PATTERNS: Array<{ field: keyof ParsedAddress; pattern: RegExp }> = [
   { field: "house_no", pattern: /(?:บ้านเลขที่|เลขที่)\s*([^\s,]+)/ },
   { field: "moo", pattern: /(?:หมู่ที่|หมู่|ม\.)\s*([0-9๐-๙]+)/ },
   { field: "soi", pattern: /(?:ซอย|ซ\.)\s*([^\s,]+)/ },
-  { field: "road", pattern: /(?:ถนน|ถ\.)\s*([^\s,]+(?:\s[^\s,]+)?)/ },
+  { field: "road", pattern: /(?:ถนน|ถ\.)\s*([^\s,]+)/ },
   { field: "subdistrict", pattern: /(?:แขวง|ตำบล|ต\.)\s*([^\s,]+)/ },
   { field: "district", pattern: /(?:เขต|อำเภอ|อ\.)\s*([^\s,]+)/ },
   { field: "province", pattern: /(?:จังหวัด|จ\.)\s*([^\s,]+)/ },

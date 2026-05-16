@@ -48,7 +48,7 @@ _FIELD_PATTERNS: list[tuple[str, re.Pattern]] = [
     ("house_no",   re.compile(r"(?:บ้านเลขที่|เลขที่)\s*([^\s,]+)")),
     ("moo",        re.compile(r"(?:หมู่ที่|หมู่|ม\.)\s*([0-9๐-๙]+)")),
     ("soi",        re.compile(r"(?:ซอย|ซ\.)\s*([^\s,]+)")),
-    ("road",       re.compile(r"(?:ถนน|ถ\.)\s*([^\s,]+(?:\s[^\s,]+)?)")),
+    ("road",       re.compile(r"(?:ถนน|ถ\.)\s*([^\s,]+)")),
     ("subdistrict", re.compile(r"(?:แขวง|ตำบล|ต\.)\s*([^\s,]+)")),
     ("district",   re.compile(r"(?:เขต|อำเภอ|อ\.)\s*([^\s,]+)")),
     ("province",   re.compile(r"(?:จังหวัด|จ\.)\s*([^\s,]+)")),

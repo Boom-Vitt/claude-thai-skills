@@ -179,12 +179,14 @@ def _run_tests() -> None:
             failures.append(label)
 
     # --- Thai ID checksum ---
+    # Synthetic fixtures only — none correspond to a real-issued ID.
+    # Real Thai IDs are issued by DOPA; these are constructed test inputs.
     valid_ids = [_make_valid_id(p) for p in [
-        "110170023070",
-        "310060046140",
+        "000000000000",
         "123456789012",
         "999999999999",
         "100000000000",
+        "222222222222",
     ]]
     for vid in valid_ids:
         check(f"is_valid_thai_id({vid})", is_valid_thai_id(vid), True)
@@ -200,7 +202,7 @@ def _run_tests() -> None:
     # Garbage inputs
     check("is_valid_thai_id empty", is_valid_thai_id(""), False)
     check("is_valid_thai_id 12 digits", is_valid_thai_id("123456789012"), False)
-    check("is_valid_thai_id letters", is_valid_thai_id("110170023070A"), False)
+    check("is_valid_thai_id letters", is_valid_thai_id("000000000000A"), False)
 
     # --- Phone normalization ---
     check("normalize +66", normalize_phone("+66812345678"), "+66812345678")
@@ -228,7 +230,7 @@ def _run_tests() -> None:
     # Phone tag 01 with value 0066812345678
     check("PP phone formatted", "01130066812345678" in payload_phone, True)
 
-    payload_id = build_promptpay_payload(_make_valid_id("110170023070"), None)
+    payload_id = build_promptpay_payload(_make_valid_id("000000000000"), None)
     print(f"[INFO] PromptPay national-id static payload: {payload_id}")
     # Static QR: point-of-init = 11
     check("PP static POI=11", "010211" in payload_id, True)

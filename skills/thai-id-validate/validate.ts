@@ -122,7 +122,8 @@ function run() {
   };
 
   // --- Thai ID ---
-  const validIds = ["110170023070", "310060046140", "123456789012", "999999999999", "100000000000"].map(makeValidId);
+  // Synthetic fixtures only — none correspond to a real-issued ID.
+  const validIds = ["000000000000", "123456789012", "999999999999", "100000000000", "222222222222"].map(makeValidId);
   for (const vid of validIds) {
     check(`isValidThaiId(${vid})`, isValidThaiId(vid), true);
     const lastDigit = parseInt(vid.slice(-1), 10);
@@ -135,7 +136,7 @@ function run() {
   check("isValidThaiId formatted", isValidThaiId(formatted), true);
   check("isValidThaiId empty", isValidThaiId(""), false);
   check("isValidThaiId 12 digits", isValidThaiId("123456789012"), false);
-  check("isValidThaiId letters", isValidThaiId("110170023070A"), false);
+  check("isValidThaiId letters", isValidThaiId("000000000000A"), false);
 
   // --- Phone ---
   check("normalize +66", normalizePhone("+66812345678"), "+66812345678");
@@ -158,7 +159,7 @@ function run() {
   check("PP contains AID", payloadPhone.includes("A000000677010111"), true);
   check("PP phone tag/value", payloadPhone.includes("01130066812345678"), true);
 
-  const payloadId = buildPromptPayPayload(makeValidId("110170023070"));
+  const payloadId = buildPromptPayPayload(makeValidId("000000000000"));
   console.log(`[INFO] PromptPay national-id static payload: ${payloadId}`);
   check("PP static POI=11", payloadId.includes("010211"), true);
   check("PP ID tag present", payloadId.includes("0213"), true);
