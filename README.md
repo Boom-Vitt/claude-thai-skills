@@ -221,6 +221,7 @@ claude-thai-skills/
 
 - **[docs/my-setup-th.md](docs/my-setup-th.md)** — ทัวร์ config Claude Code ส่วนตัวของผม (settings, hooks, plugins, subagents — ลบข้อมูลลับแล้ว)
 - **[docs/recommended-mcp.md](docs/recommended-mcp.md)** — MCP servers ที่ผมแนะนำสำหรับงานในไทย
+- **[docs/AUDIT-2026-05.md](docs/AUDIT-2026-05.md)** — ผลตรวจ skill ทั้ง 12 ตัวจากมุม Thai use-case (พฤษภาคม 2569) พร้อม finding ID ที่ PR ถัดไปอ้างได้
 
 ---
 
