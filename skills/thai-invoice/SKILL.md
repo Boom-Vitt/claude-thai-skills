@@ -55,6 +55,45 @@ Note: a short-form (อย่างย่อ) invoice can omit buyer TIN and add
 - Common payment terms: "ชำระเงินภายใน 30 วันนับจากวันที่วางบิล" / "Net 30" / "เครดิตเทอม 45 วัน"
 - Combined form "ใบเสร็จรับเงิน/ใบกำกับภาษี" is allowed for cash sales by VAT-registered sellers
 
+## e-Tax Invoice & e-Receipt (ใบกำกับภาษีอิเล็กทรอนิกส์)
+Revenue Department's electronic tax-document program. As of 2026 still **optional** — no mandatory rollout has been announced — but adopters got VAT/WHT deductibility incentives that ran through 31 Dec 2025. Two tracks; pick by annual revenue:
+
+**Track 1 — e-Tax Invoice by Email** (small business, revenue ≤ 30M baht/year)
+- Issue PDF/A-3 (or XML) by email to the buyer, CC the ETDA timestamp address (`csemail@etda.or.th`)
+- ETDA returns a time-stamped copy to both parties — that timestamp is the legal proof of issuance
+- No CA certificate required; signup via etax.rd.go.th
+- Suitable for SMEs / freelancers / small ห้างหุ้นส่วน
+
+**Track 2 — e-Tax Invoice & e-Receipt** (full system, any size; mandatory path for large firms)
+- XML per RD schema, signed with a **digital signature** using a certificate from an RD-approved Certification Authority (CA)
+- Submit XML to RD via Host-to-Host, Service Provider, or web upload on etax.rd.go.th — by the 15th of the following month
+- Each document gets an RD-assigned reference; sequence numbers must be unique and unbroken
+
+**Data elements** = same seven items as Sec 86/4 (above) **plus** a valid digital signature (Track 2) or ETDA time stamp (Track 1) and the seller's e-Tax registration ID. No paper original is required once issued electronically.
+
+**Archival**: keep XML/PDF + signature/timestamp for **5 years** (Revenue Code §87/3); 7 years if under audit. Buyer may claim input VAT from the electronic copy — no paper needed.
+
+**What changes vs paper invoice**: signing step, XML schema validation, RD upload (Track 2 only), and electronic archival. Numbering rules, content rules, and credit/debit-note rules are unchanged.
+
+## Filing returns — ภ.พ.30 (VAT) and ภ.ง.ด.1/3/53 (WHT)
+These are the monthly แบบแสดงรายการ that aggregate the invoices and WHT certificates issued during the period. From 1 Jan 2025 the Revenue Department requires WHT returns to be filed via e-Filing.
+
+| Form | Purpose | Who/what | Filed by | Paper due | e-File due |
+|---|---|---|---|---|---|
+| **ภ.พ.30** | Monthly VAT return | VAT-registered seller; output VAT − input VAT | VAT registrant | 15th of next month | 23rd of next month |
+| **ภ.ง.ด.1** | WHT on salary (Revenue Code §50(1)) | Employer → employees | Employer | 7th of next month | 15th of next month |
+| **ภ.ง.ด.1ก** | Annual salary-WHT reconciliation | Same as ภ.ง.ด.1, full-year roll-up | Employer | end of February | end of February |
+| **ภ.ง.ด.3** | WHT on payments to **individuals** (§3 ter, §50(2)) | Payer → บุคคลธรรมดา | Payer | 7th of next month | 15th of next month |
+| **ภ.ง.ด.53** | WHT on payments to **juristic persons** | Payer → บริษัท/ห้างหุ้นส่วน | Payer | 7th of next month | 15th of next month |
+| **ภ.ง.ด.2** | WHT on interest/dividends | Payer of interest/dividends | Payer | 7th of next month | 15th of next month |
+
+- Late ภ.พ.30: surcharge **1.5% per month** (or fraction) on unpaid VAT, plus a fixed fine (200 baht if >7 days late)
+- Late ภ.ง.ด.1/3/53: 100 baht fine if ≤7 days late, 200 baht if more; 1.5%/month surcharge on unpaid WHT
+- RD has historically granted standing e-filing extensions of ~8 days past these dates — confirm the current notice before filing on the wire
+- **ภ.พ.30** must be filed even in zero-sale months (nil return)
+
+**Practical link**: every ใบกำกับภาษี you **issue** feeds the output-VAT side of ภ.พ.30; every ใบกำกับภาษี you **receive** feeds input VAT. Every WHT certificate you issue (ภ.ง.ด.3 / 53 booklet) feeds the corresponding monthly return; ภ.ง.ด.1 aggregates the WHT line on payroll slips. The skill produces the source documents — the periodic returns are a separate accounting step.
+
 ## Common mistakes
 1. Forgetting to separate VAT line ("ราคารวม 1,070 บาท (รวม VAT)") — Revenue Code requires showing VAT amount distinctly on a full tax invoice.
 2. Using "ใบเสร็จ/ใบกำกับภาษี" combined form when seller is not VAT-registered — only VAT-registered sellers can issue ใบกำกับภาษี.
@@ -64,6 +103,10 @@ Note: a short-form (อย่างย่อ) invoice can omit buyer TIN and add
 6. Missing TIN on buyer side for B2B — Revenue may reject input-VAT claim.
 7. Bilingual invoices that translate "Tax Invoice" but omit the Thai "ใบกำกับภาษี" — Thai law requires the Thai phrase explicitly.
 8. Computing WHT on the VAT-inclusive amount — base must be pre-VAT.
+9. Issuing e-Tax Invoice (Track 2) without a valid digital signature from an RD-approved CA — RD will reject the XML, and the buyer cannot claim input VAT.
+10. Filing ภ.พ.30 on the 16th (or e-filing on the 24th) and triggering the 1.5%/month surcharge — the deadline is hard, not "around the middle of the month".
+11. Mixing up ภ.ง.ด.3 and ภ.ง.ด.53 — ภ.ง.ด.3 is for payments to **บุคคลธรรมดา (individuals)**, ภ.ง.ด.53 is for payments to **นิติบุคคล (juristic persons)**. Wrong form = re-file.
+12. Forgetting **ภ.ง.ด.1ก** (annual salary-WHT reconciliation, due end of February) — the monthly ภ.ง.ด.1 filings don't substitute for it.
 
 ## Templates
 See:
@@ -78,3 +121,5 @@ See:
 - `calculate_wht(amount, rate)` → `{amount, wht, net_payable}`
 - `WHT_RATES` constant for the common categories
 - Run `python calc.py` for a self-test
+
+Known limit: `calc.py` operates on a single transaction. It does not model return-level aggregation — e.g. summing many invoices' output VAT minus input VAT into a ภ.พ.30 total, or rolling WHT certificates into ภ.ง.ด.3/53 monthly totals. That belongs in the user's bookkeeping system, not this skill.

@@ -76,6 +76,97 @@ The DPO must report directly to top management, cannot have a conflict of intere
 - Criminal: up to ฿1,000,000 and/or 1 year imprisonment for unauthorized disclosure of sensitive data for personal benefit
 - Civil: actual damages + punitive damages up to 2× actual damages
 
+## Cross-border transfers (Section 28 / 29) and standard contractual clauses
+PDPC issued two notifications in the Royal Gazette on 25 ธ.ค. 2566 (eff. 24 มี.ค. 2567): one under **Sec 28** (adequacy / "whitelist" route) and one under **Sec 29** (appropriate safeguards incl. BCR and standard contractual clauses / สัญญามาตรฐาน). Check the current PDPC notification text before quoting numbers — these are the controlling sub-regulations.
+
+**Practical state:** PDPC has not yet published an adequacy whitelist. In practice, almost every transfer (Cloudflare, AWS, GCP, Azure, Slack, HubSpot, Zendesk, parent-company HR systems) needs a **Sec 29** safeguard.
+
+Lawful routes under Sec 28/29:
+
+| Route | Source | When to use |
+|---|---|---|
+| Adequacy | Sec 28 + Whitelist Notification | Only if destination is on the PDPC whitelist (none as of writing) |
+| BCR (binding corporate rules) | Sec 29 + Safeguards Notification | Intra-group transfers; **must be pre-approved by the PDPC** |
+| SCC (สัญญามาตรฐาน) | Sec 29 + Safeguards Notification | Most third-party processor/controller transfers; clauses must meet PDPC minimum content |
+| Certification | Sec 29 + Safeguards Notification | Where a PDPC-recognized certification scheme exists |
+| Explicit consent | Sec 28(1) | Data subject informed of inadequate protection and consents — fragile, not for routine use |
+| Contractual necessity | Sec 28(3)/(4) | Transfer needed to perform a contract with / in the interest of the data subject |
+| Vital interest / legal claim / public interest | Sec 28(2)/(5)/(6) | Narrow exceptions |
+
+What to write in the privacy notice (Sec 23(5)+(6) anchor):
+- Destination countries (list them — "global cloud providers" is not enough)
+- The Sec 28 or Sec 29 route relied on for each
+- For SCC: state that PDPC-compliant standard contractual clauses are in place and available on request
+- For BCR: state PDPC approval status
+- Do not write "we comply with GDPR SCCs" — EU SCCs are not automatically a PDPA Sec 29 safeguard; either re-paper to PDPC SCC or add a Thai addendum
+
+## DPIA — risk assessment (no codified DPIA section)
+Important framing: **PDPA does not have a GDPR-style Article 35 "DPIA is mandatory" provision.** What it does have:
+- Sec 37(1) — controller must put in place security measures appropriate to the risk
+- Sec 39 — Record of Processing Activities (RoPA), which forces you to enumerate purpose, categories, retention, recipients, safeguards
+- Sec 40 — same duties on the processor
+- PDPC guidance (and SME-exemption carve-outs) treats certain processing as inherently high-risk and effectively expects a written impact assessment
+
+When to run a DPIA (ประเมินผลกระทบด้านการคุ้มครองข้อมูลส่วนบุคคล) even though not statutorily required:
+- Large-scale processing of Sec 26 sensitive data (health, biometric, genetic, religion, sexual behavior, criminal record, trade union, etc.)
+- Systematic monitoring of a public area or of users (CCTV at scale, employee monitoring, location tracking)
+- AI / automated decision-making / profiling that materially affects the subject (credit scoring, AI hiring screen, fraud risk score)
+- New technology with unclear risk profile (biometrics for entry, emotion AI, large-scale scraping)
+- Children's data at scale
+- Any processing the SME RoPA-exemption carve-out catches (risk-creating, not occasional, or sensitive — see Sec 39 ¶3)
+
+Minimum DPIA content (align with PDPC expectations and EU sub-processor due-diligence):
+1. Description of processing — purpose, categories, flows, retention
+2. Necessity and proportionality assessment against the lawful basis
+3. Risk to data subjects' rights and freedoms (likelihood + severity)
+4. Mitigations — technical (encryption, pseudonymization, access control) and organizational (DPA, training, retention limits)
+5. Residual risk and sign-off by DPO / management
+
+There is no PDPA equivalent of GDPR's "prior consultation" duty, but where residual risk is high and you cannot mitigate, the prudent path is to consult the PDPC before launch and document the consultation.
+
+## Sectoral overlays
+PDPA is the floor. Sector regulators add stricter obligations and sometimes carve out specific data types from PDPA entirely. Always check the sector rule on top of PDPA.
+
+| Sector | Regulator | Overlay (non-exhaustive) |
+|---|---|---|
+| Banking / financial institutions | Bank of Thailand (ธปท.) | BoT Data Governance Guidelines (2564 / 2021); IT-risk and outsourcing notifications; incident reporting to BoT and TB-CERT in parallel with PDPC |
+| Credit bureau data | OFIPC / Credit Information Business Act | CIBA governs credit information; credit-bureau operations are largely **outside** PDPA scope — consent and disclosure rules come from CIBA, not Sec 19 |
+| Capital markets / securities / digital assets | สำนักงาน ก.ล.ต. (SEC) | Client-data confidentiality under SEC Act and digital-asset notifications; KYC/AML retention duties may override "delete on request" |
+| Insurance | คปภ. (OIC) | Insurance-specific customer-data and claims-data rules layered on PDPA |
+| Telecom | กสทช. (NBTC) | NBTC notification on protection of telecom users' personal data, privacy, and freedom of communication (replaced the 2549/2006 notification) — extra duties for CDR, location, traffic data |
+| Digital ID / e-transactions | MDES, ETDA | Electronic Transactions Act, digital-ID framework; ETDA notifications on trusted service providers |
+| Healthcare | กระทรวงสาธารณสุข (MOPH), NHSO, Medical Council | Patient confidentiality under the National Health Act (พ.ร.บ. สุขภาพแห่งชาติ) Sec 7, Medical Profession Act ethics, and MOPH circulars; health data is also Sec 26 sensitive data under PDPA |
+| Cybersecurity for CII | สกมช. (NCSA) | Cybersecurity Act 2562 incident reporting for critical information infrastructure — runs in parallel with PDPC breach notice |
+
+When drafting a privacy notice for a regulated entity, state the sector regulator alongside PDPC in the rights / complaints section, and acknowledge sector-specific retention duties (e.g. "5 years under AML / 10 years under SEC rules") rather than promising deletion on request.
+
+## Controller, processor, and "joint controllers" (Section 6)
+PDPA codifies two roles, not three:
+- **ผู้ควบคุมข้อมูลส่วนบุคคล (data controller)** — the person who decides the purposes and means of processing (กำหนดวัตถุประสงค์และวิธีการ). Holder of the primary duties under Sec 23, 37, 39 and the primary target of enforcement.
+- **ผู้ประมวลผลข้อมูลส่วนบุคคล (data processor)** — the person who processes on behalf of and on the instructions of the controller (ประมวลผลตามคำสั่ง). Duties in Sec 40: act only on documented instructions, security measures, record of processing activities, notify the controller of breaches.
+
+**Joint controllership** is not a codified concept in PDPA the way GDPR Art 26 codifies it. PDPC sub-regulations recognize "affiliated business / group of undertakings" — e.g. allowing a shared DPO — but there is no PDPA "joint controller" article that allocates liability between co-controllers. Practical implication: if two entities jointly determine purposes (กำหนดร่วมกัน), each is a controller in its own right and each carries full controller liability to the data subject. Allocate responsibility in a contract, but assume the data subject can sue either of you.
+
+Data processing agreement (DPA / สัญญาประมวลผลข้อมูล) requirements — Sec 40 sets the duty; PDPC has not published a fixed DPA template, but a defensible DPA should include:
+- Scope: subject matter, duration, nature and purpose, categories of data and subjects
+- Processor obligation to act only on the controller's documented instructions
+- Confidentiality of personnel; security measures referencing Sec 37(1)
+- Sub-processor controls: prior written authorization and flow-down of equivalent terms
+- Assistance with data-subject rights requests and breach notification within timeframes that let the controller meet its own Sec 37 72-hour clock
+- Return / deletion of data at end of services
+- Audit / inspection rights
+- Cross-border transfer terms (Sec 28/29 route used)
+
+Liability to the data subject (who gets sued):
+- Pure processor acting within instructions → controller is primarily liable
+- Processor exceeds instructions, becomes a de-facto controller for that processing → processor carries controller liability for that scope
+- Joint determination of purposes → both are controllers; both are exposed
+
+What to put in the privacy notice:
+- Name the controller (Sec 23(7))
+- Disclose categories of processors and what they do (cloud hosting, analytics, payments) — naming each by brand is not required by statute but is best practice and increasingly expected
+- If there is a co-controller arrangement, name the other controller and which one handles which data-subject rights requests; do not hide behind "our partners"
+
 ## Common mistakes
 - **Translated GDPR template** — leaves "Art. 6 / Art. 9 GDPR" references; re-cite to Sec 24 / Sec 26 PDPA
 - **"By continuing to browse, you consent..."** — invalid; PDPA needs explicit affirmative action
@@ -87,3 +178,10 @@ The DPO must report directly to top management, cannot have a conflict of intere
 - **No DPO contact in notice** even when DPO is required — Sec 41(3) requires publication
 - **Bundling marketing consent with terms acceptance** — Sec 19(4) bars bundled consent for unrelated purposes
 - **Forgetting children's data special treatment** — under 10 needs parental consent (Sec 20); 10–20 depends on capacity
+- **Citing "GDPR SCCs" as the Sec 29 safeguard** — EU SCCs are not automatically PDPA-compliant; re-paper with PDPC standard contractual clauses or add a Thai addendum
+- **Assuming a destination country is "adequate"** — PDPC has not published an adequacy whitelist; default to a Sec 29 safeguard for every transfer
+- **Skipping a DPIA for AI hiring / credit scoring / employee monitoring** — no codified DPIA section, but Sec 37/39 + PDPC guidance treat these as high-risk and EU sub-processors will demand the document
+- **Treating a SaaS vendor as a "joint controller"** to dodge a DPA — almost all SaaS relationships are controller-to-processor and need a Sec 40 DPA, not a co-controller clause
+- **Promising "delete on request" in a regulated sector** — AML, SEC, BoT, NBTC, and medical-records retention duties override the Sec 33 erasure right
+- **Ignoring BoT / NBTC / sector incident-reporting clocks** — sector regulators want notice in parallel with the PDPC 72-hour clock, not after it
+- **Treating credit-bureau queries as PDPA-governed** — Credit Information Business Act largely displaces PDPA for credit-bureau operations; use CIBA consent language, not Sec 19
