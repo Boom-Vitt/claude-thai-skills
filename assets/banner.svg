@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="claude-thai-skills — 12 skills ภาษาไทยสำหรับ Claude Code">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0d0e"/>
+      <stop offset="1" stop-color="#1a1717"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D97757"/>
+      <stop offset="1" stop-color="#E8997E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <rect x="0" y="0" width="6" height="360" fill="url(#accent)"/>
+
+  <!-- Title block -->
+  <text x="64" y="120" font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="44" font-weight="700" fill="#f5f5f4" letter-spacing="-1">claude-thai-skills</text>
+  <text x="64" y="158" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="22" fill="#A8A29E" letter-spacing="0.2">12 skills · Claude พูดไทยรู้เรื่องขึ้น</text>
+
+  <!-- Skills grid (4 cols × 3 rows of monospace pills) -->
+  <g font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="14" fill="#E7E5E4">
+    <!-- row 1 -->
+    <rect x="64"  y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="80"  y="221">thai-translate</text>
+
+    <rect x="256" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="272" y="221">thai-social-caption</text>
+
+    <rect x="448" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="464" y="221">thai-customer-service</text>
+
+    <rect x="640" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="656" y="221">thai-resume</text>
+
+    <!-- row 2 -->
+    <rect x="64"  y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="80"  y="265">thai-government-form</text>
+
+    <rect x="256" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="272" y="265">thai-festival-card</text>
+
+    <rect x="448" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="464" y="265">thai-pdpa</text>
+
+    <rect x="640" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="656" y="265">thai-invoice</text>
+
+    <!-- row 3 -->
+    <rect x="64"  y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="80"  y="309">thai-id-validate</text>
+
+    <rect x="256" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="272" y="309">thai-date-format</text>
+
+    <rect x="448" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="464" y="309">thai-address</text>
+
+    <rect x="640" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="656" y="309">thai-text-processing</text>
+  </g>
+
+  <!-- Right-side mark -->
+  <g transform="translate(880,90)">
+    <text font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="13" fill="#A8A29E" letter-spacing="2">FOR CLAUDE CODE</text>
+    <g transform="translate(0,30)">
+      <text font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="72" font-weight="700" fill="url(#accent)">๑๒</text>
+      <text x="100" y="30" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="20" fill="#E7E5E4">skills</text>
+      <text x="100" y="58" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="14" fill="#A8A29E">ภาษาไทย</text>
+    </g>
+  </g>
+
+  <!-- Bottom right meta -->
+  <text x="1136" y="332" text-anchor="end" font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="12" fill="#57534E">MIT · v0.1 · github.com/Boom-Vitt/claude-thai-skills</text>
+</svg>
