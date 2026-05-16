@@ -1,0 +1,25 @@
+{
+  "name": "claude-thai-skills",
+  "description": "12 skills ภาษาไทยสำหรับ Claude Code — แปล, แคปชั่นโซเชียล, เรซูเม่, จดหมายราชการ, PDPA, ใบกำกับภาษี, PromptPay, เลขบัตร ปชช., วันที่ พ.ศ., ที่อยู่ไทย, และตอบลูกค้า.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": [
+    "skills/thai-translate",
+    "skills/thai-social-caption",
+    "skills/thai-customer-service",
+    "skills/thai-resume",
+    "skills/thai-festival-card",
+    "skills/thai-government-form",
+    "skills/thai-pdpa",
+    "skills/thai-text-processing",
+    "skills/thai-id-validate",
+    "skills/thai-date-format",
+    "skills/thai-address",
+    "skills/thai-invoice"
+  ]
+}

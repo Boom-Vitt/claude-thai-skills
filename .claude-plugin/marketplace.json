@@ -1,0 +1,29 @@
+{
+  "name": "claude-thai-skills",
+  "owner": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "metadata": {
+    "description": "Marketplace for Thai-language Claude Code skills · มาร์เก็ตเพลสทักษะ Claude ภาษาไทย",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "claude-thai-skills",
+      "source": ".",
+      "description": "12 skills ภาษาไทยสำหรับ Claude Code — translation, social captions, resumes, government letters, PDPA, tax invoices, PromptPay, Thai national ID, BE/CE dates, Thai addresses, customer service.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "thailand",
+        "localization",
+        "i18n",
+        "pdpa",
+        "promptpay",
+        "line-oa"
+      ]
+    }
+  ]
+}
