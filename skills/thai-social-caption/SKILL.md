@@ -27,7 +27,8 @@ description: Use this skill for any task involving writing Thai-language social 
 | Threads | 1–3 sentences | conversational, opinionated | 0–2 |
 | X (Twitter) | <140 chars Thai | punchy, witty | 0–1 |
 | Pantip | long-form, story format | community-friendly | uses room tags |
-| LINE TIMELINE | 1–2 sentences | broadcasty, friendly | 0 |
+| LINE VOOM | 100–300 chars | warm, plain-spoken | 3–5 |
+| Live (pre) | 150–400 chars | hype + info-packed | 2–5 |
 
 ### 2. Thai social writing devices
 - **Repeated vowels for emphasis:** ดีมากกกก, อร่อยยยย, ปังงงง, น่ารักกกก
@@ -82,6 +83,66 @@ hook (problem/desire) → benefit → CTA → ราคา → urgency
 "ส่งฟรีทั่วประเทศ! 🚚 ถึงสิ้นเดือนนี้เท่านั้น / ช้อปครบ 500.- ส่งฟรีไม่ต้องใช้โค้ด / ทักแชทสั่งได้เลยค่ะ 😊
 #ชื่อร้าน"
 
+## LINE VOOM (LINE Timeline rebranded 2022)
+
+LINE Voom = LINE's in-app social feed. คนละอย่างกับ LINE OA broadcast (ที่เด้งเข้าแชท). Voom เป็นฟีดที่คนเลื่อนดูเอง โทนต้องเป็นมิตรเหมือนเพื่อนบ้านคุยกัน ไม่ใช่โฆษณายัดเยียด.
+
+**Audience profile:** Thai mass-market, อายุเฉลี่ยสูงกว่า TikTok เล็กน้อย (25–55), ครอบครัว, ต่างจังหวัดเยอะ, ใช้ LINE เป็นช่องทางหลักอยู่แล้ว. เข้าฟีดเพื่อดูข่าวบ้าน ดูร้านใกล้บ้าน ดูดวง ดูสาระน่ารู้.
+
+**Caption length:** 100–300 ตัวอักษร ยาวกว่า TikTok สั้นกว่า Facebook ยาว ๆ. มีรูป/วิดีโอประกอบเสมอ — caption ไม่ใช่พระเอก แต่ต้องอธิบายให้ครบ.
+
+**Tone:** สุภาพ เป็นกันเอง ภาษาบ้าน ๆ. ห้ามใช้ภาษาวัยรุ่นจัด ห้ามใช้ irony แบบ Gen Z ห้ามอังกฤษล้วน. เน้น "ค่ะ/ครับ" ลงท้าย, ใช้ น้า/นะคะ ได้.
+
+**Hashtags:** มีระบบ # อยู่จริงแต่ไม่เด่นเท่า IG. ใส่ 3–5 พอ เน้น discovery tag ภาษาไทย: #สาระน่ารู้ #ของกินอร่อย #ร้านใกล้บ้าน #โปรโมชั่นวันนี้.
+
+**What works:** ความอบอุ่น, รูปอาหาร, ครอบครัว, วันพระ/วันสำคัญทางศาสนา, โปรโมชั่นท้องถิ่น, สาระน่ารู้สั้น ๆ (เคล็ดลับครัว, สุขภาพ, การเงินพื้นฐาน), เลขเด็ด/ดูดวง, ข่าวร้านใหม่ในจังหวัด.
+
+**What flops:** ภาษาอังกฤษเยอะ, มุก Gen Z แบบ ironic/sarcastic, CTA ดุดัน ("รีบสั่งเดี๋ยวนี้!!!"), trendy slang ของ TikTok (ตำ/มู ใช้ได้แต่อย่ายัด), ภาพแต่งจัดเกินจริง.
+
+**Example 1 — product promo (ร้านขนมเปี๊ยะ):**
+"ขนมเปี๊ยะไส้ถั่วกวนสูตรโบราณ อบใหม่ทุกเช้าค่ะ 🥮 / แป้งบางไส้แน่น หวานกำลังพอดี ทานคู่ชาร้อน ๆ อร่อยที่สุด / สั่งล่วงหน้า 1 วัน รับได้ที่ร้าน หรือส่ง Grab ในตัวเมืองค่ะ / กล่อง 6 ชิ้น 120 บาท / ทักไลน์ @banpiahome ได้เลยน้า
+#ขนมเปี๊ยะ #ของฝากเชียงใหม่ #ขนมโบราณ #สาระน่ารู้"
+
+**Example 2 — engagement/lifestyle (เคล็ดลับ):**
+"เคล็ดลับลดค่าไฟหน้าร้อนแบบง่าย ๆ ที่บ้านทำได้เลยค่ะ ☀️ / 1) ตั้งแอร์ 26 องศา เปิดพัดลมช่วย / 2) ปิดเครื่องใช้ไฟฟ้าที่ standby / 3) ซักผ้ารวมรอบใหญ่ไม่ซักทีละนิด / ใครมีเคล็ดลับอื่นมาแชร์กันในคอมเมนต์ได้น้า ลองเอาไปปรับใช้กันนะคะ 🙏
+#สาระน่ารู้ #ประหยัดค่าไฟ #เคล็ดลับในบ้าน"
+
+## Live-stream captions (FB Live / TikTok Live / Shopee Live / IG Live)
+
+Live commerce ในไทยใหญ่มาก — แม่ค้าไลฟ์ขายของได้หลักแสนต่อรอบ. แคปชั่นมี 2 จังหวะ: **pre-live announcement** (โพสต์ก่อนเริ่ม 1–24 ชม.) กับ **during-live updates** (โพสต์สั้น ๆ ระหว่างไลฟ์เพื่อดึงคนเข้า).
+
+### Pre-live caption components
+ต้องมีครบ 5 อย่าง อย่าขาด:
+1. **วันเวลา** — ระบุชัด ๆ "วันนี้ 2 ทุ่ม" / "พรุ่งนี้ 20:00 น." (ไทยใช้ 24 ชม. ได้ แต่ภาษาพูดนิยม "2 ทุ่ม / 3 ทุ่ม")
+2. **แม่ค้า/แขกรับเชิญ** — เรียก "แม่ค้า", "พี่ + ชื่อเล่น", "น้อง + ชื่อเล่น" เช่น "พี่แนน", "น้องมิ้น", "แม่ค้าก้อย"
+3. **สินค้า/หมวด** — "เสื้อผ้าแฟชั่นเกาหลี", "ครีมหน้าใส", "ปลาทูเค็มสูตรแม่"
+4. **Hook** — "โปรเด็ด / ลดสุดในไลฟ์ / ของแถมเพียบ / ราคาไลฟ์เท่านั้น / ลดเพิ่ม 50% ในไลฟ์"
+5. **CTA** — "กดติดตาม / เปิดแจ้งเตือน / set notification / กดกระดิ่ง / รอเจอกันนะคะ"
+
+### During-live updates
+สั้น เร่งด่วน เน้น scarcity + urgency:
+- "เหลือ 5 ตัวสุดท้าย!! 🔥"
+- "Code ลดเพิ่ม 50.- รับช่วงไลฟ์เท่านั้น พิมพ์ในแชทเลยค่ะ"
+- "พี่แนนแถมให้อีก 1 ชิ้น เฉพาะ 10 คนแรก! 🎁"
+- "ตัวนี้หมดแล้วค่า ไปดูตัวต่อไปกัน"
+
+### Platform differences
+
+| Platform | Audience | Pace | Caption style |
+|---|---|---|---|
+| **Shopee Live** | ช้อปปิ้งมินเดด, อายุ 20–40 | ปานกลาง | เน้น product card, pin โค้ดในแชท, รหัสสินค้าชัด |
+| **TikTok Live** | วัยรุ่น–วัยทำงานต้น, urban | เร็วมาก | trendy slang OK (ตำ/ปัง/จัดเลย), gamified |
+| **FB Live** | อายุ 30+, ต่างจังหวัด, แม่บ้าน | ช้ากว่า | อธิบายสินค้าละเอียด, รีวิวเชิงลึก, comment-driven |
+| **IG Live** | urban young, แฟชั่น/บิวตี้ | ปานกลาง | TH-EN mix, aesthetic, brand-led |
+
+**Example 1 — pre-live Shopee Live (เสื้อผ้า):**
+"📣 ไลฟ์ใหญ่คืนนี้!! 2 ทุ่มตรง 🛍️ / พี่แนนยกคลังเสื้อผ้าเกาหลีมาไลฟ์ ลดสุดในรอบเดือน / เดรส เสื้อ กางเกง เริ่ม 99.- เท่านั้น / โค้ดลดเพิ่ม 50.- เฉพาะในไลฟ์ พิมพ์ NANLIVE / ของแถมเพียบ มีลุ้นรับกระเป๋าฟรี 5 ใบ / กดติดตามร้าน + เปิดแจ้งเตือน รอเจอกันนะคะ 🔔
+#ShopeeLive #เสื้อผ้าเกาหลี #ไลฟ์สดShopee"
+
+**Example 2 — pre-live TikTok Live (อาหารทะเลแห้ง):**
+"ไลฟ์คืนนี้ 3 ทุ่ม จัดเต็ม! 🦐🔥 / แม่ค้าก้อยยกกุ้งแห้งสด ๆ จากระนองมาไลฟ์ / ราคาไลฟ์ลดสุด ถูกกว่าตลาด 30% / ของแถมจัดเต็ม สั่งครบ 500 แถมปลาหมึกแห้ง 1 ขีด / กดติดตาม + กดกระดิ่งรอเลยจ้าาาา ตำกันให้หนัก!
+#tiktoklive #ของกินมาแรง #กุ้งแห้งระนอง #fyp"
+
 ## Common mistakes
 - Literal translation of marketing English: "พวกเราตื่นเต้นที่จะประกาศ" → use "ขอประกาศ" หรือ "มาแล้วจ้า"
 - Too many CTAs in one post (pick ONE action).
@@ -91,3 +152,7 @@ hook (problem/desire) → benefit → CTA → ราคา → urgency
 - Forgetting platform character limits (X clips at 280; Threads at 500).
 - Using only English hashtags for a Thai-only audience product.
 - Emoji overload (>5 emojis per short caption looks desperate).
+- Posting TikTok-style captions on LINE Voom — wrong audience (Voom skews older/family, slang and ironic humor flop).
+- Pre-live captions without a clear วันเวลา / countdown — viewers won't know when to come back; always pin time + ทุ่ม format.
+- Calling it "LINE Timeline" — rebranded to LINE Voom in 2022; using the old name signals outdated knowledge.
+- Forgetting CTA to "เปิดแจ้งเตือน / กดกระดิ่ง" on pre-live posts — follow alone doesn't push notifications when the stream starts.
