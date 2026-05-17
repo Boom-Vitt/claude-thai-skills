@@ -1,0 +1,12 @@
+{
+  "name": "thai-id-validate",
+  "description": "Use this skill for any task involving Thai national ID, tax ID, phone number, or PromptPay QR code validation, normalization, or generation.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}

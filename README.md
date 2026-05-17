@@ -21,8 +21,11 @@
 ```bash
 # วิธีที่แนะนำ — ผ่าน Claude Code plugin marketplace
 /plugin marketplace add Boom-Vitt/claude-thai-skills
-/plugin install claude-thai-skills
+/plugin install claude-thai-skills          # ทั้งชุด 12 ตัว
+/plugin install thai-invoice                # หรือเฉพาะตัวที่ต้องการ
 ```
+
+แต่ละ skill ลงทะเบียนเป็น plugin แยกใน marketplace ด้วย — ติดตั้งทีละตัวได้เลย ไม่ต้องเอามาทั้งชุด. ดูครบทุก skill พร้อมคำสั่งติดตั้งทีละตัวที่ [SKILLS.md](SKILLS.md).
 
 <details>
 <summary><b>วิธีอื่น</b> — clone + script, หรือ copy เฉพาะตัว</summary>
@@ -170,7 +173,6 @@ claude-thai-skills/
 
 ผมเขียนรีโปนี้คนเดียว ตอนกลางคืน หลังเลิกงานลูกค้า. ใช้เองทุกวันก็จริง แต่ก็มีจุดอ่อน:
 
-- `thai-address/parse.py` แยกชื่อถนนแบบ single-token — ถนนหลายคำ (เช่น `พระราม 9`) อาจตัดผิด
 - `thai-pdpa` อ้างอิงประกาศ PDPC ฉบับที่ผมเช็คล่าสุด — กฎหมายเปลี่ยนได้, ถ้ามีประกาศใหม่กระทบ เปิด issue
 - `thai-invoice` ใช้ VAT 7% / WHT rates ปัจจุบัน — ถ้ารัฐบาลปรับ rate (เช่น VAT กลับเป็น 10%) ต้องอัปเดต
 - 8 prose skills ยังไม่ผ่าน adversarial test scenarios ตาม `superpowers:writing-skills` flow

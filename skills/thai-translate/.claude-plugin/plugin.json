@@ -1,0 +1,12 @@
+{
+  "name": "thai-translate",
+  "description": "Use this skill for any task involving English-Thai or Thai-English translation, localization, or rewording.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}

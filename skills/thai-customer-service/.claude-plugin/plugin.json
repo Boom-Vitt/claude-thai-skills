@@ -1,0 +1,12 @@
+{
+  "name": "thai-customer-service",
+  "description": "Use this skill for any task involving Thai customer service messaging — replies, apologies, status updates, refund/return scripts, and auto-replies on LINE OA, Facebook Page, Shopee, Lazada, Instagram DM, TikTok Shop, and similar channels.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}

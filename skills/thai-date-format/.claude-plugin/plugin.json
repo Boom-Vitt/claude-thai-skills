@@ -1,0 +1,12 @@
+{
+  "name": "thai-date-format",
+  "description": "Use this skill for any task involving Thai date formatting, Buddhist Era (พ.ศ.) ↔ Gregorian (ค.ศ.) year conversion, or Arabic ↔ Thai numeral conversion.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}
