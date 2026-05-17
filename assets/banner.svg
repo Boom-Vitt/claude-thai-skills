@@ -62,10 +62,10 @@
   <!-- Right-side mark -->
   <g transform="translate(880,90)">
     <text font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="13" fill="#A8A29E" letter-spacing="2">FOR CLAUDE CODE</text>
-    <g transform="translate(0,30)">
+    <g transform="translate(0,72)">
       <text font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="72" font-weight="700" fill="url(#accent)">๑๒</text>
-      <text x="100" y="30" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="20" fill="#E7E5E4">skills</text>
-      <text x="100" y="58" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="14" fill="#A8A29E">ภาษาไทย</text>
+      <text x="130" y="-10" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="20" fill="#E7E5E4">skills</text>
+      <text x="130" y="14" font-family="ui-sans-serif,system-ui,'Noto Sans Thai','IBM Plex Sans Thai','Sarabun',sans-serif" font-size="14" fill="#A8A29E">ติดตั้งทีละตัวก็ได้</text>
     </g>
   </g>
 
