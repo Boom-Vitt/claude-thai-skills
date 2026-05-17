@@ -1,0 +1,87 @@
+name: Bug report / รายงานบั๊ก
+description: รายงานพฤติกรรมที่ผิดปกติของ skill หรือสคริปต์ / Report incorrect behavior in a skill or script.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่รายงานบั๊ก. โปรดให้ข้อมูลเท่าที่จะให้ได้เพื่อให้ผมตามทำซ้ำเคสได้.
+
+        Thank you for filing a bug. Please give as much detail as you can so that the issue can be reproduced. **อย่า paste ข้อมูลส่วนตัวจริง — เลขบัตรประชาชน, เบอร์โทร, ที่อยู่จริง — ใช้ค่าทดสอบที่ผ่าน checksum หรือ placeholder.**
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill ที่เกี่ยวข้อง / Affected skill
+      description: เลือก skill ที่บั๊กอยู่. ถ้าเป็นปัญหา infra (CI, validator, install) เลือก "Infrastructure".
+      options:
+        - thai-translate
+        - thai-social-caption
+        - thai-customer-service
+        - thai-resume
+        - thai-festival-card
+        - thai-government-form
+        - thai-pdpa
+        - thai-text-processing
+        - thai-id-validate
+        - thai-date-format
+        - thai-address
+        - thai-invoice
+        - Infrastructure (CI, scripts, install.sh)
+        - Multiple / unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt หรือคำสั่งที่ทำให้เกิดบั๊ก / Prompt or command that triggers the bug
+      description: prompt ที่ส่งให้ Claude, หรือ shell command ที่รัน.
+      placeholder: |
+        prompt: "ออกใบกำกับภาษีค่าบริการ design 30,000 บาท"
+        command: python3 skills/thai-invoice/calc.py
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ผลลัพธ์ที่ได้ / Actual output
+      description: paste output แบบที่ได้จริง. ถ้ายาวมาก ตัดเฉพาะส่วนที่เกี่ยวข้อง.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ผลลัพธ์ที่คาดว่าจะได้ / Expected output
+      description: อธิบายว่า output ควรหน้าตาเป็นยังไง และทำไม. ถ้าอ้างอิงระเบียบ/กฎหมาย ใส่ลิงก์ด้วย.
+    validations:
+      required: true
+
+  - type: input
+    id: repo-version
+    attributes:
+      label: Commit hash ของรีโป / Repository commit
+      description: รันคำสั่ง `git rev-parse --short HEAD` ในรีโปแล้ว paste ผลลัพธ์.
+      placeholder: 4452391
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, Node.js version. (รัน `python3 --version` และ `node --version`.)
+      placeholder: "macOS 14.5, Python 3.12.4, Node 20.11"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ข้อมูลเพิ่มเติม / Additional context
+      description: screenshot, log, hypothesis ของ root cause, workaround ที่ลองแล้ว.

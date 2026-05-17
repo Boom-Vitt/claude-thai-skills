@@ -1,0 +1,51 @@
+# Continuous integration for claude-thai-skills.
+#
+# This workflow runs the same `scripts/test-all.sh` that contributors run
+# locally, so a green run on a contributor's machine should mean a green run
+# on GitHub. The job is deliberately single-OS and single-version: Thai
+# text handling is not OS-dependent and the test suite finishes in seconds,
+# so we trade a matrix for a faster signal.
+#
+# If a future skill needs a real package manager (Poetry, npm install, etc.)
+# add the install step before "Run test suite" rather than introducing a
+# second workflow file.
+
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run skill self-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Print tool versions for the run log
+        run: |
+          python3 --version
+          node --version
+          npm --version
+
+      - name: Run test suite
+        run: ./scripts/test-all.sh

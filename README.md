@@ -7,6 +7,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-A8A29E?style=flat&labelColor=27272A)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/for-Claude%20Code-D97757?style=flat&labelColor=27272A)](https://docs.claude.com/en/docs/claude-code)
 [![Skills](https://img.shields.io/badge/skills-12-D97757?style=flat&labelColor=27272A)](#skills--ตัวที่มี)
+[![CI](https://github.com/Boom-Vitt/claude-thai-skills/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Boom-Vitt/claude-thai-skills/actions/workflows/test.yml)
 
 </div>
 
@@ -133,7 +134,14 @@ claude-thai-skills/
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin metadata
 │   └── marketplace.json     # Marketplace listing
+├── .github/
+│   ├── workflows/test.yml   # CI: รัน scripts/test-all.sh ทุก push/PR
+│   ├── ISSUE_TEMPLATE/      # bug / content correction / feature templates
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── assets/banner.svg
+├── scripts/
+│   ├── test-all.sh          # รัน self-test ทุก skill ในคำสั่งเดียว
+│   └── validate-skills.py   # ตรวจ frontmatter ของ SKILL.md ทุกตัว
 ├── skills/
 │   ├── thai-invoice/
 │   │   ├── SKILL.md
@@ -144,10 +152,17 @@ claude-thai-skills/
 │   │   ├── validate.py      # checksum + PromptPay QR
 │   │   └── validate.ts
 │   └── ... (12 skills total)
+├── template/
+│   └── SKILL.md             # scaffold สำหรับสร้าง skill ใหม่
 ├── docs/
 │   ├── my-setup-th.md       # ทัวร์ config ส่วนตัว (sanitized)
 │   └── recommended-mcp.md   # MCP servers แนะนำ
 ├── install.sh
+├── AGENTS.md                # คู่มือสำหรับ AI agent (Claude, Codex, Cursor, ฯลฯ)
+├── CONTRIBUTING.md          # ขั้นตอนการ contribute, ตั้งค่าเครื่อง, รัน test
+├── SECURITY.md              # รายงานช่องโหว่ + disclaimer เนื้อหากฎหมาย
+├── CHANGELOG.md             # บันทึก release ตาม Keep a Changelog
+├── THIRD_PARTY_NOTICES.md   # เครดิตไลบรารีและแหล่งอ้างอิงทางการ
 ├── LICENSE                  # MIT
 └── README.md
 ```
@@ -160,6 +175,14 @@ claude-thai-skills/
 |---|---|---|
 | **Validator (มี code + tests)** | `thai-id-validate`, `thai-date-format`, `thai-address`, `thai-invoice` | Python + TypeScript self-test ผ่านครบ |
 | **Prose / Reference** | อีก 8 ตัว | v0.1 — ครบเนื้อหา ยังไม่ผ่าน adversarial testing |
+
+รัน self-test ทุกตัวพร้อม validator ที่ตรวจ `SKILL.md` ของทั้ง 12 skill ในคำสั่งเดียว:
+
+```bash
+./scripts/test-all.sh
+```
+
+ทุก commit ที่ push ไปยัง `main` และทุก pull request จะรันคำสั่งเดียวกันนี้ผ่าน GitHub Actions โดยอัตโนมัติ — ดู workflow ที่ [.github/workflows/test.yml](.github/workflows/test.yml). รายละเอียดวิธี register self-test ของ skill ใหม่ใน CI อยู่ใน [CONTRIBUTING.md](CONTRIBUTING.md).
 
 > [!NOTE]
 > ตัวอย่างทุกอย่างในรีโปนี้ (เลขบัตรประชาชน, เบอร์โทร, ที่อยู่, ชื่อบริษัท) เป็น **synthetic test fixtures** — สร้างให้ผ่าน checksum, ไม่ใช่ของบุคคล/องค์กรจริง
@@ -188,6 +211,8 @@ claude-thai-skills/
 - **เจอเนื้อหาผิด (โดยเฉพาะ legal / Revenue / PDPA):** เปิด issue พร้อมแหล่งอ้างอิง.
 - **มี test scenario:** PR ได้เลย — `thai-pdpa`, `thai-resume`, `thai-government-form` ต้องการที่สุด.
 
+ขั้นตอนละเอียด, วิธีรัน test runner, รูปแบบ commit, และข้อแนะนำสำหรับเนื้อหาที่อ้างอิงกฎหมายอ่านได้ใน [CONTRIBUTING.md](CONTRIBUTING.md). ถ้าจะเพิ่ม skill ใหม่ใช้ [template/SKILL.md](template/SKILL.md) เป็น scaffold. AI agent (Claude, Codex CLI, Cursor, Gemini CLI, ฯลฯ) อ่าน [AGENTS.md](AGENTS.md) เป็นจุดเริ่ม. ประวัติ release อยู่ใน [CHANGELOG.md](CHANGELOG.md). ที่มาของไลบรารีและสเปกของหน่วยงานราชการที่ skill อ้างอิงระบุไว้ใน [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). ถ้าพบช่องโหว่ด้านความปลอดภัย โปรดรายงานตามขั้นตอนใน [SECURITY.md](SECURITY.md) แทนการเปิด public issue.
+
 ไม่ต้องเกรงใจ. ผมเองก็เขียนใต้กดดันบางครั้ง — เจอบั๊กบอกได้ตรงๆ.
 
 ---
@@ -196,6 +221,7 @@ claude-thai-skills/
 
 - **[docs/my-setup-th.md](docs/my-setup-th.md)** — ทัวร์ config Claude Code ส่วนตัวของผม (settings, hooks, plugins, subagents — ลบข้อมูลลับแล้ว)
 - **[docs/recommended-mcp.md](docs/recommended-mcp.md)** — MCP servers ที่ผมแนะนำสำหรับงานในไทย
+- **[docs/AUDIT-2026-05.md](docs/AUDIT-2026-05.md)** — ผลตรวจ skill ทั้ง 12 ตัวจากมุม Thai use-case (พฤษภาคม 2569) พร้อม finding ID ที่ PR ถัดไปอ้างได้
 
 ---
 

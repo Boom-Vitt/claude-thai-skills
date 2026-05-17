@@ -1,0 +1,52 @@
+name: Feature or new skill / ฟีเจอร์ใหม่หรือ skill ใหม่
+description: เสนอ skill ใหม่ หรือฟีเจอร์ใหม่ของ skill ที่มีอยู่ / Propose a new skill or a new capability for an existing one.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ก่อนจะเริ่มเขียน skill ใหม่ขนาดใหญ่ ลองเปิด issue นี้เพื่อคุยกันก่อน. หลายครั้ง สิ่งที่ดูเหมือน skill ใหม่จริงๆ ควรเป็นการ extend skill ที่มีอยู่.
+
+        Before starting work on a large new skill, open this issue to discuss scope. Often what looks like a new skill is better expressed by extending an existing one.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: ปัญหาที่ต้องการแก้ / Problem this addresses
+      description: บอกว่า Claude ตอบผิดยังไงเมื่อไม่มี skill นี้, หรืออะไรที่ยังทำไม่ได้.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: ข้อเสนอ / Proposed solution
+      description: skill ใหม่จะมีอะไรบ้าง — frontmatter description คร่าวๆ, scope, output ที่คาดหวัง.
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: ตัวอย่าง trigger / Example user prompts
+      description: ผู้ใช้จะพิมพ์อะไรที่ทำให้ Claude หยิบ skill นี้. ใส่ทั้งภาษาไทยและอังกฤษ.
+      placeholder: |
+        - "เขียนเอกสาร X ให้หน่อย"
+        - "draft a Thai Y for me"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: ทางเลือกที่คิดถึง / Alternatives considered
+      description: skill ที่มีอยู่ทำงานคล้ายกันไหม. ทำไมถึงคิดว่าต้องสร้างใหม่.
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: ความตั้งใจในการ contribute / Willing to contribute
+      options:
+        - label: ผม/ดิฉันยินดีเขียน skill นี้เองและส่ง PR / I am willing to write this skill and open a PR.
+        - label: อยากให้ maintainer หรือ contributor คนอื่นเขียนให้ / I would like a maintainer or other contributor to write this.

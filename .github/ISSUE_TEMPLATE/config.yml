@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Boom-Vitt/claude-thai-skills/security/advisories/new
+    about: ห้ามรายงานช่องโหว่เป็น public issue. ใช้ GitHub Private Vulnerability Reporting แทน. / Do not report vulnerabilities as a public issue — use GitHub Private Vulnerability Reporting.
+  - name: คำถามทั่วไป / Question or discussion
+    url: https://github.com/Boom-Vitt/claude-thai-skills/discussions
+    about: ถามคำถามที่ไม่ใช่บั๊กในหน้า Discussions. / For non-bug questions, open a discussion instead of an issue.
