@@ -6,7 +6,7 @@ description: Use this skill for any task involving Thai postal address parsing, 
 # Thai Address (แยก/ตรวจที่อยู่ไทย)
 
 ## Overview
-แยกที่อยู่ไทย (บ้านเลขที่ หมู่ ซอย ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด รหัสไปรษณีย์) เป็น structured dict, ตรวจ postcode 5 หลัก, ดูจังหวัดจาก 2 หลักแรกของ postcode, และ map ระหว่างชื่อไทย/อังกฤษของ 77 จังหวัด.
+แยกที่อยู่ไทย (บ้านเลขที่ หมู่ ซอย ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด รหัสไปรษณีย์) เป็น structured dict, ตรวจ postcode 5 หลัก, ดูจังหวัดจาก 2 หลักแรกของ postcode, และ map ระหว่างชื่อไทย/อังกฤษของ 77 จังหวัด. รองรับชื่อถนนหลายคำ (เช่น `ถนนพระราม 9`, `ถนนเลียบทางด่วน`) และฟิลด์คอนโด/อพาร์ตเมนต์ (อาคาร, ชั้น, ห้อง) ด้วย.
 
 ## When to use
 - Parse ที่อยู่จากฟอร์ม, e-commerce, PDF
@@ -23,14 +23,22 @@ description: Use this skill for any task involving Thai postal address parsing, 
 Thai postal addresses go small-to-large — the **reverse** of English convention. Always order fields like this on a shipping label:
 
 ```
-บ้านเลขที่ → หมู่ → ซอย → ถนน → ตำบล/แขวง → อำเภอ/เขต → จังหวัด → รหัสไปรษณีย์
+[อาคาร → ชั้น → ห้อง →] บ้านเลขที่ → หมู่ → ซอย → ถนน → ตำบล/แขวง → อำเภอ/เขต → จังหวัด → รหัสไปรษณีย์
 ```
 
-Example:
+Example (house):
 ```
 123/45 ซอยสุขุมวิท 21 ถนนสุขุมวิท
 แขวงคลองเตยเหนือ เขตวัฒนา
 กรุงเทพมหานคร 10110
+```
+
+Example (condo / apartment):
+```
+อาคารชาญอิสสระ ชั้น 12 ห้อง 1203
+99 ถนนพระราม 4
+แขวงสีลม เขตบางรัก
+กรุงเทพมหานคร 10500
 ```
 
 ## Bangkok vs provincial vocabulary
@@ -51,6 +59,9 @@ Example:
 | หมู่ที่ / หมู่ / ม. | Moo / Mu |
 | ซอย / ซ. | Soi |
 | ถนน / ถ. | Road / Rd. |
+| อาคาร / ตึก / คอนโด | Building / Block / Condo |
+| ชั้น | Floor / Fl. |
+| ห้อง | Unit / Room |
 | ตำบล / ต. | Sub-district / Tambon |
 | อำเภอ / อ. | District / Amphoe |
 | แขวง | Sub-district / Khwaeng |
@@ -62,9 +73,17 @@ Example:
 
 | Function | Returns |
 |---|---|
-| `parse_address(s)` | dict with 8 keys (any may be `None`) |
+| `parse_address(s)` | dict with 11 keys (any may be `None`) |
 | `validate_postcode(pc)` | `bool` |
 | `province_from_postcode(pc)` | Thai province name or `None` |
+
+### `parse_address` return keys
+
+`house_no`, `moo`, `soi`, `road`, `building`, `floor`, `unit`, `subdistrict`, `district`, `province`, `postcode`. Each is a `str` or `None`. `building` covers อาคาร / ตึก / คอนโด.
+
+Multi-token road names are captured up to the next address keyword, so
+`ถนนพระราม 9 แขวงห้วยขวาง …` yields `road = "พระราม 9"`. Thai numerals
+(`๐-๙`) and compound names (`ถนนเลียบทางด่วน`, `ถนนสาทรเหนือ`) are supported.
 
 ### Postcode prefix map (selected)
 | Prefix | Region |

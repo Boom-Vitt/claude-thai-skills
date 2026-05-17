@@ -44,26 +44,48 @@ _PROVINCE_NAMES_EN = {p["name_en"] for p in PROVINCES}
 # Tokens we look for, ordered roughly by usual occurrence in a Thai address.
 # Each pattern captures the value following the keyword up to the next keyword
 # or postcode/end-of-string.
+#
+# For `road` and `building`, we capture greedily up to the next recognized
+# keyword (or postcode / end-of-string) so multi-token names work:
+#   ถนนพระราม 9 แขวงห้วยขวาง   → road = "พระราม 9"
+#   อาคารชาญอิสสระ ทาวเวอร์ 2  → building = "ชาญอิสสระ ทาวเวอร์ 2"
+_ROAD_STOP = (
+    r"(?=\s+(?:แขวง|ตำบล|ต\.|เขต|อำเภอ|อ\.|จังหวัด|จ\.|รหัสไปรษณีย์|ซอย|ซ\.|"
+    r"อาคาร|ตึก|คอนโด|ชั้น|ห้อง|บ้านเลขที่|เลขที่|หมู่ที่|หมู่|ม\.)"
+    r"|\s+\d{5}\b|\s*,|$)"
+)
+_BUILDING_STOP = (
+    r"(?=\s+(?:แขวง|ตำบล|ต\.|เขต|อำเภอ|อ\.|จังหวัด|จ\.|รหัสไปรษณีย์|ซอย|ซ\.|"
+    r"ถนน|ถ\.|ชั้น|ห้อง|บ้านเลขที่|เลขที่|หมู่ที่|หมู่|ม\.)"
+    r"|\s+\d{5}\b|\s*,|$)"
+)
+
 _FIELD_PATTERNS: list[tuple[str, re.Pattern]] = [
-    ("house_no",   re.compile(r"(?:บ้านเลขที่|เลขที่)\s*([^\s,]+)")),
-    ("moo",        re.compile(r"(?:หมู่ที่|หมู่|ม\.)\s*([0-9๐-๙]+)")),
-    ("soi",        re.compile(r"(?:ซอย|ซ\.)\s*([^\s,]+)")),
-    ("road",       re.compile(r"(?:ถนน|ถ\.)\s*([^\s,]+)")),
+    ("house_no",    re.compile(r"(?:บ้านเลขที่|เลขที่)\s*([^\s,]+)")),
+    ("moo",         re.compile(r"(?:หมู่ที่|หมู่|ม\.)\s*([0-9๐-๙]+)")),
+    ("soi",         re.compile(r"(?:ซอย|ซ\.)\s*([^\s,]+)")),
+    ("road",        re.compile(r"(?:ถนน|ถ\.)\s*(.+?)" + _ROAD_STOP)),
+    ("building",    re.compile(r"(?:อาคาร|ตึก|คอนโด)\s*(.+?)" + _BUILDING_STOP)),
+    ("floor",       re.compile(r"ชั้น\s*([^\s,]+)")),
+    ("unit",        re.compile(r"ห้อง\s*([^\s,]+)")),
     ("subdistrict", re.compile(r"(?:แขวง|ตำบล|ต\.)\s*([^\s,]+)")),
-    ("district",   re.compile(r"(?:เขต|อำเภอ|อ\.)\s*([^\s,]+)")),
-    ("province",   re.compile(r"(?:จังหวัด|จ\.)\s*([^\s,]+)")),
-    ("postcode",   re.compile(r"(?:รหัสไปรษณีย์\s*)?(\b\d{5}\b)")),
+    ("district",    re.compile(r"(?:เขต|อำเภอ|อ\.)\s*([^\s,]+)")),
+    ("province",    re.compile(r"(?:จังหวัด|จ\.)\s*([^\s,]+)")),
+    ("postcode",    re.compile(r"(?:รหัสไปรษณีย์\s*)?(\b\d{5}\b)")),
 ]
 
 
 def parse_address(s: str) -> dict:
     """Parse a Thai postal address into a dict.
 
-    Returns a dict with keys: house_no, moo, soi, road, subdistrict, district,
-    province, postcode. Missing fields are None.
+    Returns a dict with keys: house_no, moo, soi, road, building, floor, unit,
+    subdistrict, district, province, postcode. Missing fields are None.
 
     The parser is keyword-anchored — it relies on Thai labels like บ้านเลขที่,
     หมู่, ซอย, ถนน, แขวง/ตำบล, เขต/อำเภอ, จังหวัด, รหัสไปรษณีย์ (or their abbrev forms).
+    Multi-token road names (e.g. ถนนพระราม 9, ถนนเลียบทางด่วน) are captured up to
+    the next address keyword. Condo/apartment fields อาคาร/ตึก/คอนโด → building,
+    ชั้น → floor, ห้อง → unit are also extracted when present.
     """
     if not isinstance(s, str):
         raise ValueError("address must be a string")
@@ -75,6 +97,9 @@ def parse_address(s: str) -> dict:
         "moo": None,
         "soi": None,
         "road": None,
+        "building": None,
+        "floor": None,
+        "unit": None,
         "subdistrict": None,
         "district": None,
         "province": None,
@@ -197,6 +222,77 @@ def _run_tests() -> None:
     check("Abbr district", abbr["district"], "ปากเกร็ด")
     check("Abbr province", abbr["province"], "นนทบุรี")
     check("Abbr postcode", abbr["postcode"], "11120")
+
+    # Multi-token road: พระราม 9 (Arabic numeral)
+    rama9 = parse_address(
+        "บ้านเลขที่ 99 ถนนพระราม 9 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310"
+    )
+    check("Rama9 road", rama9["road"], "พระราม 9")
+    check("Rama9 subdistrict", rama9["subdistrict"], "ห้วยขวาง")
+    check("Rama9 postcode", rama9["postcode"], "10310")
+
+    # Multi-token road: สุขุมวิท 21 used as road name (not soi)
+    suk21 = parse_address(
+        "1 ถนนสุขุมวิท 21 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110"
+    )
+    check("Suk21 road", suk21["road"], "สุขุมวิท 21")
+    check("Suk21 subdistrict", suk21["subdistrict"], "คลองเตยเหนือ")
+
+    # Multi-token road: ศรีนครินทร์ ๓๔ (Thai numerals)
+    srin = parse_address(
+        "10 ถนนศรีนครินทร์ ๓๔ แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร 10250"
+    )
+    check("Srin road", srin["road"], "ศรีนครินทร์ ๓๔")
+
+    # Multi-token compound road, no number: เลียบทางด่วน
+    leab = parse_address(
+        "55 ถนนเลียบทางด่วน แขวงคลองจั่น เขตบางกะปิ กรุงเทพมหานคร 10240"
+    )
+    check("Leab road", leab["road"], "เลียบทางด่วน")
+
+    # Road at end-of-string (no trailing keyword)
+    eol = parse_address("ถนนพระราม 4")
+    check("EOL road", eol["road"], "พระราม 4")
+
+    # Road immediately before bare 5-digit postcode
+    bare = parse_address("ถนนพระราม 9 10310")
+    check("Bare-postcode road", bare["road"], "พระราม 9")
+    check("Bare-postcode postcode", bare["postcode"], "10310")
+
+    # Condo / building / floor / unit
+    condo = parse_address(
+        "อาคารชาญอิสสระ ชั้น 12 ห้อง 1203 บ้านเลขที่ 99 ถนนพระราม 4 "
+        "แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500"
+    )
+    check("Condo building", condo["building"], "ชาญอิสสระ")
+    check("Condo floor", condo["floor"], "12")
+    check("Condo unit", condo["unit"], "1203")
+    check("Condo house_no", condo["house_no"], "99")
+    check("Condo road", condo["road"], "พระราม 4")
+    check("Condo subdistrict", condo["subdistrict"], "สีลม")
+    check("Condo district", condo["district"], "บางรัก")
+    check("Condo postcode", condo["postcode"], "10500")
+
+    # ตึก variant + alphanumeric unit code
+    tuek = parse_address(
+        "ตึกเอ ชั้น 5 ห้อง A-15 บ้านเลขที่ 1 ถนนสีลม แขวงสีลม เขตบางรัก กรุงเทพมหานคร 10500"
+    )
+    check("Tuek building", tuek["building"], "เอ")
+    check("Tuek floor", tuek["floor"], "5")
+    check("Tuek unit", tuek["unit"], "A-15")
+
+    # คอนโด variant
+    condo2 = parse_address(
+        "คอนโดเดอะนิช ห้อง 88 บ้านเลขที่ 8 ถนนรัชดาภิเษก แขวงดินแดง เขตดินแดง กรุงเทพมหานคร 10400"
+    )
+    check("Condo2 building", condo2["building"], "เดอะนิช")
+    check("Condo2 unit", condo2["unit"], "88")
+
+    # Backwards-compat: building/floor/unit are None when absent
+    plain = parse_address("12 ม.3 ต.บ้านใหม่ อ.ปากเกร็ด จ.นนทบุรี 11120")
+    check("Plain building None", plain["building"], None)
+    check("Plain floor None", plain["floor"], None)
+    check("Plain unit None", plain["unit"], None)
 
     print()
     if failures:

@@ -1,0 +1,12 @@
+{
+  "name": "thai-resume",
+  "description": "Use this skill for any task involving Thai-language or bilingual (TH/EN) resumes and CVs.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}

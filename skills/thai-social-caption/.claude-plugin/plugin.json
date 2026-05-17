@@ -1,0 +1,12 @@
+{
+  "name": "thai-social-caption",
+  "description": "Use this skill for any task involving writing Thai-language social media captions, posts, or short-form copy.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vittawat (Boom-Vitt)",
+    "url": "https://github.com/Boom-Vitt"
+  },
+  "homepage": "https://github.com/Boom-Vitt/claude-thai-skills",
+  "license": "MIT",
+  "skills": ["."]
+}

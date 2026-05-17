@@ -24,6 +24,176 @@
         "promptpay",
         "line-oa"
       ]
+    },
+    {
+      "name": "thai-translate",
+      "source": "./skills/thai-translate",
+      "description": "Use this skill for any task involving English-Thai or Thai-English translation, localization, or rewording.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "translation",
+        "localization",
+        "i18n",
+        "register"
+      ]
+    },
+    {
+      "name": "thai-social-caption",
+      "source": "./skills/thai-social-caption",
+      "description": "Use this skill for any task involving writing Thai-language social media captions, posts, or short-form copy.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "social-media",
+        "caption",
+        "tiktok",
+        "facebook",
+        "instagram"
+      ]
+    },
+    {
+      "name": "thai-customer-service",
+      "source": "./skills/thai-customer-service",
+      "description": "Use this skill for any task involving Thai customer service messaging — replies, apologies, status updates, refund/return scripts, and auto-replies on LINE OA, Facebook Page, Shopee, Lazada, Instagram DM, TikTok Shop, and similar channels.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "customer-service",
+        "line-oa",
+        "shopee",
+        "lazada",
+        "ecommerce"
+      ]
+    },
+    {
+      "name": "thai-resume",
+      "source": "./skills/thai-resume",
+      "description": "Use this skill for any task involving Thai-language or bilingual (TH/EN) resumes and CVs.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "resume",
+        "cv",
+        "bilingual",
+        "jobs"
+      ]
+    },
+    {
+      "name": "thai-festival-card",
+      "source": "./skills/thai-festival-card",
+      "description": "Use this skill for any task involving Thai festival greetings, condolences, wedding cards, royal-occasion messages, or seasonal cards.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "greetings",
+        "festival",
+        "songkran",
+        "condolence"
+      ]
+    },
+    {
+      "name": "thai-government-form",
+      "source": "./skills/thai-government-form",
+      "description": "Use this skill for any task involving Thai government letters, official correspondence, formal petitions, authorization letters, leave requests, or ราชการ forms.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "government",
+        "official-letter",
+        "ราชการ",
+        "สารบรรณ"
+      ]
+    },
+    {
+      "name": "thai-pdpa",
+      "source": "./skills/thai-pdpa",
+      "description": "Use this skill for tasks involving Thailand's PDPA (พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562).",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "privacy",
+        "pdpa",
+        "compliance",
+        "consent"
+      ]
+    },
+    {
+      "name": "thai-text-processing",
+      "source": "./skills/thai-text-processing",
+      "description": "Use this skill for any task involving Thai text in code — word segmentation, Unicode normalization, sorting/collation, search indexing, romanization, truncation, or database/Elasticsearch configuration for Thai.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "nlp",
+        "tokenization",
+        "unicode",
+        "pythainlp"
+      ]
+    },
+    {
+      "name": "thai-id-validate",
+      "source": "./skills/thai-id-validate",
+      "description": "Use this skill for any task involving Thai national ID, tax ID, phone number, or PromptPay QR code validation, normalization, or generation.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "validation",
+        "promptpay",
+        "national-id",
+        "tax-id"
+      ]
+    },
+    {
+      "name": "thai-date-format",
+      "source": "./skills/thai-date-format",
+      "description": "Use this skill for any task involving Thai date formatting, Buddhist Era (พ.ศ.) ↔ Gregorian (ค.ศ.) year conversion, or Arabic ↔ Thai numeral conversion.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "date",
+        "buddhist-era",
+        "พศ",
+        "numerals"
+      ]
+    },
+    {
+      "name": "thai-address",
+      "source": "./skills/thai-address",
+      "description": "Use this skill for any task involving Thai postal address parsing, validation, formatting, or province/postcode lookup.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "address",
+        "postcode",
+        "province",
+        "shipping"
+      ]
+    },
+    {
+      "name": "thai-invoice",
+      "source": "./skills/thai-invoice",
+      "description": "Use this skill for any task involving Thai tax invoices, receipts, quotations, or withholding-tax certificates.",
+      "version": "0.1.0",
+      "category": "language",
+      "tags": [
+        "thai",
+        "accounting",
+        "tax",
+        "vat",
+        "wht"
+      ]
     }
   ]
 }
