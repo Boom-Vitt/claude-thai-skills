@@ -20,43 +20,43 @@
   <!-- Skills grid (4 cols × 3 rows of monospace pills) -->
   <g font-family="ui-monospace,Menlo,'SF Mono',monospace" font-size="14" fill="#E7E5E4">
     <!-- row 1 -->
-    <rect x="64"  y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <rect x="64"  y="200" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
     <text x="80"  y="221">thai-translate</text>
 
-    <rect x="256" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="272" y="221">thai-social-caption</text>
+    <rect x="268" y="200" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="284" y="221">thai-social-caption</text>
 
-    <rect x="448" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="464" y="221">thai-customer-service</text>
+    <rect x="472" y="200" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="488" y="221">thai-customer-service</text>
 
-    <rect x="640" y="200" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="656" y="221">thai-resume</text>
+    <rect x="676" y="200" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="692" y="221">thai-resume</text>
 
     <!-- row 2 -->
-    <rect x="64"  y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <rect x="64"  y="244" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
     <text x="80"  y="265">thai-government-form</text>
 
-    <rect x="256" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="272" y="265">thai-festival-card</text>
+    <rect x="268" y="244" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="284" y="265">thai-festival-card</text>
 
-    <rect x="448" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="464" y="265">thai-pdpa</text>
+    <rect x="472" y="244" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="488" y="265">thai-pdpa</text>
 
-    <rect x="640" y="244" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="656" y="265">thai-invoice</text>
+    <rect x="676" y="244" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="692" y="265">thai-invoice</text>
 
     <!-- row 3 -->
-    <rect x="64"  y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <rect x="64"  y="288" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
     <text x="80"  y="309">thai-id-validate</text>
 
-    <rect x="256" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="272" y="309">thai-date-format</text>
+    <rect x="268" y="288" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="284" y="309">thai-date-format</text>
 
-    <rect x="448" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="464" y="309">thai-address</text>
+    <rect x="472" y="288" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="488" y="309">thai-address</text>
 
-    <rect x="640" y="288" width="180" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
-    <text x="656" y="309">thai-text-processing</text>
+    <rect x="676" y="288" width="200" height="32" rx="6" fill="#27272A" stroke="#3F3F46"/>
+    <text x="692" y="309">thai-text-processing</text>
   </g>
 
   <!-- Right-side mark -->
